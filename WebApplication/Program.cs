@@ -79,6 +79,8 @@ static void Prepare(IConfiguration configuration)
     using var createTableCommand = new NpgsqlCommand("CREATE TABLE IF NOT EXISTS data (id serial NOT NULL, title varchar(255), area int, PRIMARY KEY (id));", connection, transation);
     createTableCommand.ExecuteNonQuery();
 
+    var actionTest = 1;
+
     for (var i = 0; i < 5; i++)
     {
         using var insertCommand = new NpgsqlCommand($"INSERT INTO data (title, area) VALUES ('Data #{i}', {i * 10});", connection, transation);
